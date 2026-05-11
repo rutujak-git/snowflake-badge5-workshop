@@ -36,3 +36,43 @@ SELECT
    ,250 as expected
    ,'View is filtered' as description
 ); 
+
+select GRADER(step, (actual = expected), actual, expected, description) as graded_results from
+(
+  SELECT
+   'DNGW03' as step
+   ,( select count(*) 
+      from ags_game_audience.enhanced.logs_enhanced
+      where dow_name = 'Sat'
+      and tod_name = 'Early evening'   
+      and gamer_name like '%prajina'
+     ) as actual
+   ,2 as expected
+   ,'Playing the game on a Saturday evening' as description
+); 
+
+select GRADER(step, (actual = expected), actual, expected, description) as graded_results from
+(
+SELECT
+'DNGW04' as step
+ ,( select count(*)/iff (count(*) = 0, 1, count(*))
+  from table(ags_game_audience.information_schema.task_history
+              (task_name=>'LOAD_LOGS_ENHANCED'))) as actual
+ ,1 as expected
+ ,'Task exists and has been run at least once' as description 
+ ); 
+
+ select GRADER(step, (actual = expected), actual, expected, description) as graded_results from
+(
+SELECT
+'DNGW05' as step
+ ,(
+   select max(tally) from (
+       select CASE WHEN SCHEDULED_FROM = 'SCHEDULE' 
+                         and STATE= 'SUCCEEDED' 
+              THEN 1 ELSE 0 END as tally 
+   from table(ags_game_audience.information_schema.task_history (task_name=>'GET_NEW_FILES')))
+  ) as actual
+ ,1 as expected
+ ,'Task succeeds from schedule' as description
+ ); 
