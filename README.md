@@ -1,5 +1,7 @@
 # Snowflake Badge 5 Workshop — Data Engineering with Snowflake
 
+[![Snowflake Badge 5 - Data Engineering](https://img.shields.io/badge/Snowflake-Badge%205%20Data%20Engineering-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)](https://achieve.snowflake.com/59cabceb-95e9-45de-8681-6e5e5b42dc28#acc.hIl0EnSW)
+
 This project contains the SQL and notebook files for the **Snowflake Badge 5: Data Engineering Workshop** (DNGW). It covers building an end-to-end data pipeline for game audience analytics.
 
 ## Project Overview
