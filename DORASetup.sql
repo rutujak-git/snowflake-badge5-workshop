@@ -76,3 +76,28 @@ SELECT
  ,1 as expected
  ,'Task succeeds from schedule' as description
  ); 
+
+ select GRADER(step, (actual = expected), actual, expected, description) as graded_results from
+(
+SELECT
+'DNGW06' as step
+ ,(
+   select CASE WHEN pipe_status:executionState::text = 'RUNNING' THEN 1 ELSE 0 END 
+   from(
+   select parse_json(SYSTEM$PIPE_STATUS( 'ags_game_audience.raw.PIPE_GET_NEW_FILES' )) as pipe_status)
+  ) as actual
+ ,1 as expected
+ ,'Pipe exists and is RUNNING' as description
+ ); 
+
+
+select GRADER(step, (actual = expected), actual, expected, description) as graded_results from
+(
+SELECT
+'DNGW07' as step
+ ,( select count(*)/count(*) from snowflake.account_usage.query_history
+    where query_text like '%case when game_session_length < 10%'
+  ) as actual
+ ,1 as expected
+ ,'Curated Data Lesson completed' as description
+ ); 
