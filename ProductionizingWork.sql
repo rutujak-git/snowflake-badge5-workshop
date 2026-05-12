@@ -22,8 +22,6 @@ BETWEEN start_ip_int AND end_ip_int
 JOIN ags_game_audience.raw.TIME_OF_DAY_LU tod
 ON HOUR(game_event_ltz) = tod.hour);
 
---Hey! We should do this every 5 minutes from now until the next millennium - Y3K!!!
---Alexa, play Yeah by Usher!
 
 --clone the table to save this version as a backup (BU stands for Back Up)
 create table ags_game_audience.enhanced.LOGS_ENHANCED_BU 

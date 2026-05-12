@@ -32,6 +32,7 @@ copy into AGS_GAME_AUDIENCE.RAW.PL_GAME_LOGS
  select count(*) from pl_game_logs;
 
 ------------------- step 2 : Create Task to run copy into ---------------
+
 create or replace task AGS_GAME_AUDIENCE.RAW.GET_NEW_FILES
     --warehouse = compute_wh
     USER_TASK_MANAGED_INITIAL_WAREHOUSE_SIZE = 'XSMALL'

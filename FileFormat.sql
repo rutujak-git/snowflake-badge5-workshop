@@ -1,3 +1,5 @@
+-------------------- create file format -----------------------
+
 create file format AGS_GAME_AUDIENCE.RAW.FF_JSON_LOGS
     type = JSON
     strip_outer_array = true;

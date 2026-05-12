@@ -1,4 +1,4 @@
-create or replace task AGS_GAME_AUDIENCE.RAW.LOAD_LOGS_ENHANCED
+create or replace task AGS_GAME_AUDIENCE.RAW.LOAD_LOGS_ENHANCED            --- task creation
 	warehouse=COMPUTE_WH
 	schedule='5 minute'
 	as INSERT INTO AGS_GAME_AUDIENCE.ENHANCED.LOGS_ENHANCED

@@ -1,4 +1,4 @@
-create task load_logs_enhanced
+create task load_logs_enhanced        -- task creation
     warehouse = 'compute_wh'
     schedule = '5 minute'
   as
